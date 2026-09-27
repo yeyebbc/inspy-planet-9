@@ -1,0 +1,5 @@
+psutil
+requests
+openai
+fastapi
+uvicorn

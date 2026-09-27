@@ -1,0 +1,12 @@
+output
+local_config.json
+.vscode/
+.vs/
+build/
+__pycache__
+.idea
+*.pyc
+*.cfg
+*.db
+.workbuddy
+inspy.cfg-*
