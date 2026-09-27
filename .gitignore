@@ -7,6 +7,11 @@ __pycache__
 .idea
 *.pyc
 *.cfg
+.env
+.env.*
+!.env.example
 *.db
+*.log
+test/rcon-resp-listplayers.txt
 .workbuddy
 inspy.cfg-*

@@ -57,6 +57,16 @@ LogUObjectGlobals=Verbose
 其中下面这个很重要，重要！！ 因为这个serverId和serverKey每个服不一样，需要自己免费申请 http://106.75.232.195/insurgency_web/apply.php  
 sync_data.serverId -1  
 sync_data.serverKey "需申请"  
+
+本地配置 `inspy-my.cfg` 可使用 `${变量名}` 引用 RCON 密码、`sync_data.serverKey` 和 DeepSeek API 密钥。复制 `.env.example` 为 `.env`，填写实际值后安装 `requirements.txt` 中的依赖再启动。项目启动时读取根目录的 `.env`；已设置的系统环境变量优先于 `.env`。例如：
+
+```text
+sissm.RconPassword "${RCON_PASSWORD}"
+sync_data.serverKey "${SERVER_KEY}"
+chat.deepseekKey "${DEEPSEEK_API_KEY}"
+```
+
+`http_server.server[n]` 中的 ServerKey 也可使用 `${变量名}`，例如 `1|${SERVER_KEY}|服务器名`。引用的变量缺失时会报错；留空的 `DEEPSEEK_API_KEY` 会保持 AI 功能未配置的状态。`.env` 包含敏感信息，已被 Git 忽略。
   
 ## 六、安装插件：  
 >Linux系统：  

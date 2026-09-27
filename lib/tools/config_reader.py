@@ -8,6 +8,7 @@ import traceback
 import re
 
 from lib.tools.common_utils import commonUtils
+from lib.tools.env_config import resolve_secret
 from lib.tools.logger import logger
 
 
@@ -67,7 +68,8 @@ class ConfigReader:
         self.config[key] = value
 
     def get(self, key):
-        return self.config.get(key)
+        value = self.config.get(key)
+        return resolve_secret(key, value) if value is not None else None
 
     def getValue(self, key, default):
         v = self.get(key)
@@ -234,7 +236,7 @@ class ConfigReader:
             if key.startswith(name):
                 index = commonUtils.getMid(key, "[", "]")
                 if not commonUtils.isEmpty(index):
-                    value = self.config.get(key)
+                    value = self.get(key)
                     arr.append(value)
         return arr
 
